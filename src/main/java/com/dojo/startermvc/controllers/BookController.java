@@ -20,8 +20,13 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @RequestMapping("/books")
+    @RequestMapping("/")
     public String index(Model model) {
+        return "redirect:/books";
+    }
+
+    @RequestMapping("/books")
+    public String show_books(Model model) {
         List<Book> books = bookService.allBooks();
         model.addAttribute("books", books);
         return "index.jsp";
